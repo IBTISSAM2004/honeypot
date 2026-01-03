@@ -2,12 +2,14 @@ from flask import Flask, request, render_template
 import time
 import os
 from flask import send_file
+from web.sql_injection import sql_routes
 
 app = Flask(
     __name__,
     template_folder="../web/templates",
     static_folder="../web/static"
 )
+sql_routes(app)
 
 LOG_FILE = "logs/attacks.log"
 

