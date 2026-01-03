@@ -23,11 +23,17 @@ pwd
 id
 sudo -l
 2/ HTTP Honeypot
+- Fake admin login page
 in chrome try
 http://127.0.0.1
 http://127.0.0.1/admin
-**Fake vulnerability test:
+- Path Traversal / LFI vulnerability**
+Fake vulnerability test:
 http://127.0.0.1/download?file=../../etc/passwd
+  
+  - SQL Injection vulnerability (intentional)
+ /login?username=' OR '1'='1&password=' OR '1'='1
+  
 3/ FTP Honeypot
 ftp 127.0.0.1
 **View logs
