@@ -23,16 +23,44 @@ pwd
 id
 sudo -l
 2/ HTTP Honeypot
-- Fake admin login page
+admin — Fake Admin Login
+Simulates an administrative login page.
+Accepts any username and password.
+Redirects the attacker to a fake admin dashboard.
+Used to collect credentials and observe attacker behavior.
+ — Fake Admin Dashboard
+Simulates an internal admin control panel.
+Displays fake system information.
+No real administrative functionality is implemented.
+Designed to keep the attacker engaged.
 in chrome try
 http://127.0.0.1
 http://127.0.0.1/admin
+http://127.0.0.1/admin/dashboard
+
+bruteforce — Brute Force Simulation
+Simulates a login endpoint vulnerable to brute force attacks.
+Always returns invalid credentials.
+Each login attempt is recorded.
+http://127.0.0.1/bruteforce
+
 - Path Traversal / LFI vulnerability**
+download — Local File Inclusion (LFI)
+Simulates an LFI vulnerability.
+When attempting to access /etc/passwd, a fake file is returned.
+Used to detect directory traversal and file inclusion attempts.
 Fake vulnerability test:
 http://127.0.0.1/download?file=../../etc/passwd
   
-  - SQL Injection vulnerability (intentional)
- /login?username=' OR '1'='1&password=' OR '1'='1
+  - SQL Injection vulnerability 
+ sql_login — SQL Injection Honeypot
+Dedicated endpoint for SQL injection testing.
+Detects common SQL injection patterns.
+Returns realistic SQL error messages.
+No real database interaction is performed.
+http://127.0.0.1/sql_login
+
+**All detected HTTP attacks are logged in:logs/attacks.log **
   
 3/ FTP Honeypot
 ftp 127.0.0.1
